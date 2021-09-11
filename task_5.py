@@ -28,34 +28,24 @@ first_n = int(input("Введите первое число: "))
 second_n = int(input("\nВведите второе число: "))
 
 
-first_num_count = 0
-temp = first_n
+#function for number length 
+def number_length(number):
+    num_count = 0
+    while number > 0:
+        num_count += 1
+        number = number // 10
+    return num_count
 
-while temp > 0:
-    first_num_count += 1
-    temp = temp // 10
+def number_swap(number):
+    length_mod = number_length(number) - 1
+    last_digit = number % 10
+    first_digit = number // 10 ** length_mod
+    between_digits = number % 10 ** length_mod // 10
+    result = last_digit * 10 ** length_mod + between_digits * 10 + first_digit
+    return result
 
-if first_num_count < 3:
-    print("В первом числе меньше трёх цифр.")
+if number_length(first_n) < 3 or number_length(second_n) < 4:
+    print("error")
 else:
-    last_digit = first_n % 10
-    first_digit = first_n // 10 ** (first_num_count - 1)
-    between_digits = first_n % 10 ** (first_num_count - 1) // 10
-    first_n = last_digit * 10 ** (first_num_count - 1) + between_digits * 10 + first_digit
-    print('Изменённое первое число:', first_n)
-    
-    second_num_count = 0
-    temp = second_n
-    
-    while temp > 0:
-        second_num_count += 1
-        temp = temp // 10
-    if second_num_count < 4:
-        print("Во втором числе меньше четырёх цифр.")
-    else:
-        last_digit = second_n % 10
-        first_digit = second_n // 10 ** (second_num_count - 1)
-        betweenDigits = second_n % 10 ** (second_num_count - 1) // 10
-        second_n = last_digit * 10 ** (second_num_count - 1) + between_digits * 10 + first_digit
-        print('Изменённое второе число:', second_n)
-        print('\nСумма чисел:', first_n + second_n)
+    summ = number_swap(first_n)+number_swap(second_n)
+    print('\nСумма чисел:',summ)

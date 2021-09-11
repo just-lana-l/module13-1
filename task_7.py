@@ -29,3 +29,23 @@ print('Задача 7. Яйца')
 # Введите максимально допустимый уровень опасности: 0.01
 # 
 # Приблизительная глубина безопасной кладки: 0.732421875 м
+
+depth_from = 0
+depth_to = 4
+
+max_danger_lvl = float(input('Введите максимально допустимый уровень опасности'))
+
+depth = depth_from + (depth_to - depth_from) / 2
+danger_lvl = depth ** 3 - 3 * depth ** 2 - 12 * depth + 10
+
+while abs(danger_lvl) > max_danger_lvl:
+	if danger_lvl > 0:
+		depth_from = depth
+	else:
+		depth_to = depth
+		
+	depth = depth_from + (depth_to - depth_from) / 2
+	danger_lvl = depth ** 3 - 3 * depth ** 2 - 12 * depth + 10
+	print(f'Глубина: {depth}, Опасность: {danger_lvl}')
+
+print(f'Глубина безопасной кладки: {depth}')

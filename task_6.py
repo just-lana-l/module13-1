@@ -23,3 +23,15 @@ print('Задача 6. Маятник ')
 # Введите амплитуду остановки: 0.1
  
 # Маятник считается остановившимся через 27 колебаний
+
+start_amplitude = int(input('Начальная амплитуда: '))
+end_amplitude = float(input('Конечная амплитуда: '))
+count = 0
+
+while start_amplitude > end_amplitude:
+	count += 1
+
+	downgrade = start_amplitude - (start_amplitude * 8.4/100)
+	start_amplitude = downgrade
+
+print(f'Маятник считается остановившимся через {count} колебаний')
